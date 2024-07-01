@@ -10,8 +10,16 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { DialogClose } from "@radix-ui/react-dialog"
+import { FormEvent, useState } from "react"
 
 const AddtodoModel = () => {
+    const [task, setTask] = useState("")
+    const [description, setDescription] = useState("")
+    const onSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        console.log({ task, description })
+    }
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -19,36 +27,41 @@ const AddtodoModel = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
+                    <DialogTitle>Add Task</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Add a task for you.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <form onSubmit={onSubmit} className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
-                            Name
+                            Title
                         </Label>
                         <Input
                             id="name"
-                            defaultValue="Pedro Duarte"
+                            // defaultValue="Pedro Duarte"
                             className="col-span-3"
+                            onBlur={(e) => setTask(e.target.value)}
                         />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="username" className="text-right">
-                            Username
+                            Description
                         </Label>
                         <Input
                             id="username"
-                            defaultValue="@peduarte"
+                            // defaultValue="@peduarte"
                             className="col-span-3"
+                            onBlur={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                </div>
-                <DialogFooter>
-                    <Button type="submit">Save changes</Button>
-                </DialogFooter>
+                    <DialogFooter>
+                        <DialogClose asChild>
+                            <Button type="submit">Add Task</Button>
+                        </DialogClose>
+                    </DialogFooter>
+                </form>
+
             </DialogContent>
         </Dialog >
     )
