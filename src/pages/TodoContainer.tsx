@@ -4,12 +4,15 @@ import AddtodoModel from "./AddtodoModel"
 import TodoFilter from "./TodoFilter"
 import { useGetTodosQuery } from "@/redux/api/api"
 import { Ttodo } from "@/redux/features/todoSlice"
+import { useState } from "react"
 // import { useAppSelector } from "@/redux/hook"
 
 const TodoContainer = () => {
     // const { todos } = useAppSelector(state => state.todos)
+    const [priority, setPriority] = useState('')
+
     // form server
-    const { data: todos, isLoading, isError } = useGetTodosQuery(undefined)
+    const { data: todos, isLoading, isError } = useGetTodosQuery(priority)
 
     if (isLoading) {
         return <h1 className="mt-20 font-bold text-center">Loading...</h1>
@@ -24,7 +27,7 @@ const TodoContainer = () => {
             <div>
                 <div className="flex justify-between font-semibold text-xl mb-3">
                     <AddtodoModel></AddtodoModel>
-                    <TodoFilter></TodoFilter>
+                    <TodoFilter priority={priority} setPriority={setPriority}></TodoFilter>
                 </div>
                 <div className="rounded-xl bg-primary-gradient p-3">
                     <div className="p-3 bg-white rounded-md space-y-4  bg-opacity-80">
@@ -38,7 +41,9 @@ const TodoContainer = () => {
                                     <th className="border text-center py-2">
                                         Title
                                     </th>
-                                    {/* <p>Time</p> */}
+                                    <th>
+                                        priority
+                                    </th>
                                     <th className="border text-center py-2">
                                         Status
                                     </th>
@@ -57,7 +62,7 @@ const TodoContainer = () => {
                             <tbody>
                                 {
                                     todos?.data.map((items: Ttodo, idx: number) => (
-                                        <TodoCard key={idx} id={items.id} title={items.title} description={items.description} isCompleted={items.isCompleted} ></TodoCard>
+                                        <TodoCard key={idx} id={items.id} title={items.title} description={items.description} priority={items.priority} isCompleted={items.isCompleted} ></TodoCard>
                                     ))
                                 }
                             </tbody>
@@ -66,7 +71,7 @@ const TodoContainer = () => {
                     </div>
                 </div>
             </div>
-        </Container>
+        </Container >
     )
 }
 

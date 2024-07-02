@@ -5,6 +5,7 @@ export type Ttodo = {
   title: string;
   description: string;
   isCompleted?: boolean;
+  priority?: string;
 };
 type TInitialState = {
   todos: Ttodo[];

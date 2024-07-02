@@ -6,8 +6,8 @@ export const baseApi = createApi({
   tagTypes: ["todo"],
   endpoints: (builder) => ({
     getTodos: builder.query({
-      query: () => ({
-        url: "/tasks",
+      query: (priority) => ({
+        url: `/tasks?priority=${priority}`,
         method: "GET",
       }),
       providesTags: ["todo"],
@@ -15,7 +15,7 @@ export const baseApi = createApi({
     // post data using mutation
     addTodo: builder.mutation({
       query: (data) => {
-        console.log("inside base api", data);
+        // console.log("inside base api", data);
         return {
           url: "/task",
           method: "POST",

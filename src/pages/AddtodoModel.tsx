@@ -93,7 +93,7 @@ const AddtodoModel = () => {
                             <SelectContent>
                                 <SelectItem value="high">High</SelectItem>
                                 <SelectItem value="medium">Medium</SelectItem>
-                                <SelectItem value="Low">Low</SelectItem>
+                                <SelectItem value="low">Low</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
