@@ -10,6 +10,7 @@ const TodoContainer = () => {
     // const { todos } = useAppSelector(state => state.todos)
     // form server
     const { data: todos, isLoading, isError } = useGetTodosQuery(undefined)
+
     if (isLoading) {
         return <h1 className="mt-20 font-bold text-center">Loading...</h1>
     }
@@ -31,9 +32,9 @@ const TodoContainer = () => {
                             <thead>
                                 <tr className="bg-white border p-4 text-center py-3">
                                     <th className="border text-center py-2">Check</th>
-                                    <th className="border text-center py-2">
+                                    {/* <th className="border text-center py-2">
                                         Task Id
-                                    </th>
+                                    </th> */}
                                     <th className="border text-center py-2">
                                         Title
                                     </th>

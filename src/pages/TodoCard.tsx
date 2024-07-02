@@ -13,9 +13,9 @@ const TodoCard = ({ id, title, description, isCompleted }: Ttodo) => {
             <td className="border py-2 text-center">
                 <input type="checkbox" onChange={() => toggleState(id)} />
             </td>
-            <td className="border py-2 text-center">
+            {/* <td className="border py-2 text-center">
                 <p className="font-semibold">{id}</p>
-            </td>
+            </td> */}
             <td className="border py-2 text-center">
                 <p className="font-semibold">{title}</p>
             </td>
