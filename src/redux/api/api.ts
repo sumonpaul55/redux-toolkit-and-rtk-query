@@ -31,7 +31,19 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["todo"],
     }),
+    // update data
+    updateTodo: builder.mutation({
+      query: (updateDocs) => {
+        // console.log("from api", updateDocs);
+        return {
+          url: `/task/${updateDocs.id}`,
+          method: "PUT",
+          body: updateDocs.data,
+        };
+      },
+      invalidatesTags: ["todo"],
+    }),
   }),
 });
 
-export const { useGetTodosQuery, useAddTodoMutation } = baseApi;
+export const { useGetTodosQuery, useUpdateTodoMutation } = baseApi;

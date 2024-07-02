@@ -62,7 +62,7 @@ const TodoContainer = () => {
                             <tbody>
                                 {
                                     todos?.data.map((items: Ttodo, idx: number) => (
-                                        <TodoCard key={idx} id={items.id} title={items.title} description={items.description} priority={items.priority} isCompleted={items.isCompleted} ></TodoCard>
+                                        <TodoCard key={idx} id={items._id} title={items.title} description={items.description} priority={items.priority} isCompleted={items.isCompleted} ></TodoCard>
                                     ))
                                 }
                             </tbody>
